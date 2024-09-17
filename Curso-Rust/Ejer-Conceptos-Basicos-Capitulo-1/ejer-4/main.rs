@@ -30,10 +30,10 @@ fn main() {
 
     //media = get_media(nota1, nota2);
 
-    println!("Nota media\t{}\n", media);
+    println!("\nNota media\t{}\n", media);
 
-    //print!("Nota Media Funcion:\t{}\n", media);
-    print!("Nota Media Funcion:\t{}\n", get_media(nota1, nota2));
+    //print!("\nNota Media Funcion:\t{}\n", media);
+    print!("\nNota Media Funcion:\t{}\n", get_media(nota1, nota2));
 
 }
 
