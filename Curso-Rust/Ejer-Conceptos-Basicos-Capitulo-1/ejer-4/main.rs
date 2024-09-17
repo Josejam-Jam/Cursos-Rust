@@ -1,7 +1,5 @@
 /* Ejer 4  Necesitamos una aplicación que calcule la media aritmética de dos notas enteras
-Hay que tener en cuenta que la media puede contener decimales.
-
-
+            Hay que tener en cuenta que la media puede contener decimales.
 */
 
 use std::io;
