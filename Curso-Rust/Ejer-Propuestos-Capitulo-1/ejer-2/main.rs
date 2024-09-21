@@ -12,5 +12,28 @@ use std::io;
 use std::str::FromStr;
 
 fn main() {
-    println!("Hello, world!");
+    const MULTIPLO: i32 = 7;
+    let num: i32;
+
+    println!("\nIntroduce un número");
+    let mut entrada = String::new();
+
+    io::stdin().read_line(&mut entrada).expect("Error en la lectura de datos");
+    num = i32::from_str(&entrada.trim()).unwrap();
+
+    let num_result = get_sumando_multiplo(num, MULTIPLO);
+
+    println!("\nCantidad a sumar:\t{}", num_result);
+
+
+}
+
+fn get_sumando_multiplo(num: i32, multiplo: i32) -> i32 {
+    let mut result: i32 = 0;
+
+        if num % multiplo != 0 { 
+            result = multiplo - (num % multiplo);
+        }
+
+    return result;    
 }
