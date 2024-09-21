@@ -2,7 +2,7 @@
         
             y = ax² + bx + c
             
-            Crear un programa que pida los coeficientes a , b y c, así como el valor de x, y, y calcule el
+            Crear un programa que pida los coeficientes a , b y c, así como el valor de x, y calcule el
             valor de y.
 */
 
