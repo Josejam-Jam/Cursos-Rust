@@ -19,24 +19,24 @@ fn main() {
     io::stdin().read_line(&mut entrada2).expect("Error en la lectura de datos");
     num2 = i32::from_str(&entrada2.trim()).unwrap();
 
-    let son_distintos = is_distintos(num1, num2);
 
-        if son_distintos {
+        if num1 > num2 || num2 > num1 {
             let mayor = get_mayor(num1, num2);
+
             println!("\nLos Números introducidos son\t{}\t{}\tEl mayor es:\t{}\n", num1, num2, mayor);
-        } else {
-            if num1 == num2 {
-                println!("\nLos Números introducidos son iguales\n");
-            } else {
-                println!("\nError al introducir los datos\n");
-            }
+
+        } else { 
+
+            println!("\nError al introducir los datos\n");
         }
 
 }
 
+/* 
 fn is_distintos(num1: i32, num2: i32) -> bool {
     return num1 != num2;
 }
+*/
 
 fn get_mayor(num1: i32, num2: i32) -> i32 {
     let result;
