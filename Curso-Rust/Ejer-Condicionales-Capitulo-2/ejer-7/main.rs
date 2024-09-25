@@ -97,51 +97,51 @@ fn get_sort_decreciente_i32(num1: i32, num2: i32, num3: i32)  {
     let mut interm: u32 = 0;
     let mut menor: u32 = 0;
 
-    if num1 < num2 && num1 < num3 {  
-        menor = num1;
+    if num1 > num2 && num1 > num3 {  
+            mayor = num1;
 
-            if num2 < num3 { 
-                mayor = num3; 
-            } else {
-                mayor = num2;
-            }
-            if mayor == num3 {
-                interm = num2;
-            } else {
-                interm = num3;
-            }
+                if num2 > num3 { 
+                    interm = num2; 
+                } else {
+                    interm = num3;
+                }
+                if interm == num2 {
+                    menor = num3;
+                } else {
+                    menor = num2;
+                }
+        } else if num2 > num1 && num2 > num3 {
+            mayor = num2;
 
-    } else if num1 > num2 && num1 > num3 {
-        mayor = num1;
+                if num1 > num3 {
+                    interm = num1;
+                } else {
+                    interm = num3;
+                }
 
-            if num2 > num3 {
-                menor = num3;
-            } else {
-                menor = num2;
-            }
+                if interm == num1 {
+                    menor = num3;
+                } else {
+                    menor = num1;
+                }
 
-            if menor == num2 {
-                interm = num3;
-            } else {
-                interm = num2;
-            }
+        } else if num3 > num1 && num3 > num2 {
+    
+            mayor = num3;
+            
+                if num1 > num2 {
+                    interm = num1;
+                } else {
+                    interm = num2;
+                }
 
-    } else if num2 > num3 && num2 > num1 {
-  
-        mayor = num2;
-        
-            if num3 < num1 {
-                menor = num3;
-            } else {
-                menor = num3;
-            }
+                if interm == num1 {
+                    menor = num2;
+                } else {
+                    menor = num1;
+                }
+        }
 
-            if menor == num3 {
-                interm = num1;
-            } else {
-                interm = num3;
-            }    }
-        
     println!("\nMostramos los Número introducidos en Orden Decreciente\t{}\t{}\t{}", mayor, interm, menor);
 
 }
