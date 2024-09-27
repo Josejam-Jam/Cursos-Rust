@@ -12,7 +12,8 @@ fn main() {
     let mut mes: i32;
     let mut year: i32;
 
-    let mut fecha_correcta: bool = false;
+    // let mut fecha_correcta: bool = false;
+    let fecha_correcta: bool;
 
         loop {
 
@@ -64,7 +65,7 @@ fn main() {
         if year == 0 {
             fecha_correcta = false;
         } else {
-            if mes == 2 {    //mes == 2 && dia >= 1 && dia <= 28
+            /*if mes == 2 {    //mes == 2 && dia >= 1 && dia <= 28
                 if  dia >= 1 && dia <= 28 {
                     fecha_correcta = true;
                 }
@@ -82,7 +83,19 @@ fn main() {
             } else {
                 fecha_correcta = false;
             }
-            
+            */
+            if mes == 2 && dia >= 1 && dia <= 28{    
+                    fecha_correcta = true;
+
+            } else if mes == 4 || mes == 6 || mes == 9 || mes == 11 && dia >= 1 && dia <= 30 {   
+                    fecha_correcta = true;
+
+            } else if mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12 && dia >= 1 && dia <= 31 {  
+                    fecha_correcta = true;
+                
+            } else {
+                fecha_correcta = false;
+            }
         }
 
         if fecha_correcta {
