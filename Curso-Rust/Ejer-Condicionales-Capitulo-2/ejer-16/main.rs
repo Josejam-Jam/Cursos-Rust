@@ -152,7 +152,6 @@ fn get_num_en_letras_tupla(num: i32) -> (String, String, String) {
                     result_tupla.1 = "".to_string();
                 }
 
-            //result_num_letra = result_num_letra.to_string() + match unid {
             result_tupla.2 = match unid {
                 0 => "cero".to_string(),
                 1 => "uno".to_string(),
