@@ -88,7 +88,7 @@ fn main() {
 
     /*  VERSIÓN DIRECTA EN EL MAIN [ LOOP ] */
         /*loop {
-                if iterador == num_dni { 
+                if iterador == ind { 
                     
                     let mut aux: String = String::new();
                     aux = vector_letras_dni[ind].to_string(); 
@@ -99,7 +99,7 @@ fn main() {
                     break;
                 } 
                 
-                if num_dni < iterador {
+                if ind < iterador {
 
                     let mut aux: String = String::new();
                     // aux = (vector_letras_dni[0] as str).to_string(); 
@@ -118,7 +118,6 @@ fn main() {
     /*  VERSIÓN DIRECTA EN EL MAIN [ MATCH ] */
     /*  //let mut aux_ind = 0..23;
         let mut aux_ind = 0..vector_string_letras_dni.len();
-        let mut ind: usize = num_dni as usize;
         let mut salida_letra = String::new();
 
             loop {
