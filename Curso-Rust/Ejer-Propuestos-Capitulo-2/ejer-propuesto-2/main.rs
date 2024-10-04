@@ -26,7 +26,7 @@ fn main() {
 
         loop {
 
-            println!("\nIntroduce la Cantidad de Comida la que disponemos");
+            println!("\nIntroduce la Cantidad de Comida, en Kilos la que disponemos [ DECIMALES ]");
             let mut entrada = String::new();
 
             io::stdin().read_line(&mut entrada).expect("Error en la lectura de datos");
@@ -41,7 +41,7 @@ fn main() {
 
         loop {
 
-            println!("\nIntroduce la Cantidad de Animales que tenemos");
+            println!("\nIntroduce la Cantidad de Animales que tenemos [ ENTERO ]");
             let mut entrada2 = String::new();
 
             io::stdin().read_line(&mut entrada2).expect("Error en la lectura de datos");
@@ -56,7 +56,7 @@ fn main() {
 
         loop {
 
-            println!("\nIntroduce la Ración en Kilos por Animal");
+            println!("\nIntroduce la Ración en Kilos por Animal [ DECIMALES ]");
             let mut entrada3 = String::new();
 
             io::stdin().read_line(&mut entrada3).expect("Error en la lectura de datos");
