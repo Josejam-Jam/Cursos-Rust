@@ -7,10 +7,12 @@
 
 use std::io;
 use std::str::FromStr;
+use regex::Regex;
 
 fn main() {
 
     let mut num: i32;
+    let exp_regex = Regex::new(r"\d+");
 
         loop {
 
@@ -20,34 +22,41 @@ fn main() {
             io::stdin().read_line(&mut entrada).expect("Error en la lectura de datos");
             num = i32::from_str(&entrada.trim()).unwrap();
 
-            let es_par:bool = is_par(num);
-            let es_positivo: bool = is_positive(num);
+                if exp_regex.is_match(&num.to_string()){
+                    
+                    let es_par:bool = is_par(num);
+                    let es_positivo: bool = is_positive(num);
 
-                if num != 0 {
-                    if es_par && es_positivo {
+                        if num != 0 {
 
-                        println!("\nEl número {} es par, positivo y su cuadrado es {}\n", num, get_cuadrado(num));
-                    }
-                    
-                    if es_par && !es_positivo {
-    
-                        println!("\nEl número {} es par, negativo y su cuadrado es {}\n", num, get_cuadrado(num));
-                    }
-                    
-                    if !es_par && es_positivo{
-    
-                        println!("\nEl número {} es inpar, positivo y su cuadrado es {}\n", num, get_cuadrado(num));
-                    }
-                    
-                    if !es_par && !es_positivo {
-    
-                        println!("\nEl número {} es impar, negativo y su cuadrado es {}\n", num, get_cuadrado(num));
-                    } 
+                            if es_par && es_positivo {
+        
+                                println!("\nEl número {} es par, positivo y su cuadrado es {}\n", num, get_cuadrado(num));
+                            }
+                            
+                            if es_par && !es_positivo {
+            
+                                println!("\nEl número {} es par, negativo y su cuadrado es {}\n", num, get_cuadrado(num));
+                            }
+                            
+                            if !es_par && es_positivo{
+            
+                                println!("\nEl número {} es inpar, positivo y su cuadrado es {}\n", num, get_cuadrado(num));
+                            }
+                            
+                            if !es_par && !es_positivo {
+            
+                                println!("\nEl número {} es impar, negativo y su cuadrado es {}\n", num, get_cuadrado(num));
+                            } 
+                        }
+        
+                        if num == 0 {
+                            break;
+                        }
+
+                } else {
+                    println!("\nError al introducir los datos\n");
                 }
-
-                if num == 0 {
-                    break;
-                } 
         }
 
 }

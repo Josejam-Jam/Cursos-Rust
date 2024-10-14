@@ -45,6 +45,8 @@ fn main() {
                         break;
                     }
 
+                } else {
+                    println!("\nError al Introducir los datos\n");
                 }
 
         }
