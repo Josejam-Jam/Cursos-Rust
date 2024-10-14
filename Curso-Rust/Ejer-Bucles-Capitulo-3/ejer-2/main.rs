@@ -40,7 +40,6 @@ fn main() {
                         media_edades = get_media_edades(suma_edades, cont_alumnos);
                     }
                     
-                    
                     if edad < 0 {
                         break;
                     }
