@@ -6,7 +6,6 @@ use std::io;
 use std::str::FromStr;
 use regex::Regex;
 
-
 fn main() {
     let mut num: i32;
     let exp_regex = Regex::new(r"\d+").unwrap();
