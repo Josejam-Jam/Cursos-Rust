@@ -20,6 +20,7 @@ fn main() {
     let mut num_identify:i32 = 0;
     let mut max_altura:f32 = 0.0;
     let mut result_data: [f32;2] = [0.0, 0.0];
+    // let mut result_data_vector: Vec<f32> = vec![0.0, 0.0];
     let mut result_data_vector: Vec<f32> = Vec::new();
 
     let exp_regex = Regex::new(r"\d+").unwrap();
@@ -52,7 +53,7 @@ fn main() {
     
                             println!("\nNum Identificador:\t{}\tMax Altura\t{}\n", result_data[0], result_data[1]);                         /*  *** Prueba Array    */  
 
-                            println!("\nNum Identificador:\t{:?}\tMax Altura\t{:?}\n", result_data_vector[0], result_data_vector[1]);       /*  *** Prueba Vector    */  
+                            println!("\nNum Identificador:\t{:?}\tMax Altura\t{:?}\n", result_data_vector[0] as i32, result_data_vector[1]);       /*  *** Prueba Vector    */  
 
                             // show_array_max_altura(result_data);      /*  *** Prueba Array    */  
                             // show_vector_max_altura(result_data);     /*  *** Prueba Vector    */  
@@ -79,7 +80,7 @@ fn main() {
                                 if data_ok {
 
                                     if altura > 0.0 {
-                                        //max_altura = get_max_altura(/*num_identify, */altura, max_altura);
+                                        max_altura = get_max_altura(/*num_identify, */altura, max_altura);
                                         result_data = get_max_altura_array(num_identify, altura, max_altura);           /*  *** Prueba Array    */
                                         result_data_vector = get_max_altura_vector(num_identify, altura, max_altura);   /*  *** Prueba Vector    */
                                         num_identify += 1;
@@ -96,14 +97,14 @@ fn main() {
     
     println!("\nNum Identificador:\t{}\tMax Altura\t{}\n", result_data[0], result_data[1]);                         /*  *** Prueba Array    */  
 
-    println!("\nNum Identificador:\t{:?}\tMax Altura\t{:?}\n", result_data_vector[0], result_data_vector[1]);       /*  *** Prueba Vector    */  
+    println!("\nNum Identificador:\t{:?}\tMax Altura\t{:?}\n", result_data_vector[0] as i32, result_data_vector[1]);       /*  *** Prueba Vector    */  
 
     // show_array_max_altura(result_data);      /*  *** Prueba Array    */  
     // show_vector_max_altura(result_data);     /*  *** Prueba Vector    */  
     
 }
 
-/* fn get_max_altura(/*mut num_identify: i32, */altura: f32, max_altura: f32) -> f32 {
+fn get_max_altura(/*mut num_identify: i32, */altura: f32, max_altura: f32) -> f32 {
     let mut result:f32 = altura;
 
         if max_altura > altura {
@@ -113,20 +114,19 @@ fn main() {
 
     return result;
 } 
-*/
 
 fn get_max_altura_vector(num_identify: i32, altura: f32, max_altura: f32) -> Vec<f32> {     /*  *** Prueba Vector    */
-    let result:f32 = altura;
+    let mut result:f32 = altura;
     let mut aux_num_identify = num_identify as f32;
-    let result_vector: Vec<f32> = Vec::new();
+    let mut result_vector: Vec<f32> = Vec::new();
 
         if max_altura > altura {
             result = max_altura;
             aux_num_identify -= 1.0;
         }
     
-    result_vector.push(result);
     result_vector.push(aux_num_identify);
+    result_vector.push(result);
 
     return result_vector;
 } 
@@ -155,6 +155,6 @@ fn get_max_altura_array(num_identify: i32, altura: f32, max_altura: f32) ->  [f3
 
 /* fn show_vector_max_altura(result_data: Vec<f32>) {
     
-    println!("\nNum Identificador:\t{:?}\tMax Altura\t{:?}\n", result_data[0], result_data[1]);
+    println!("\nNum Identificador:\t{:?}\tMax Altura\t{:?}\n", result_data[0] as i32, result_data[1]);
 }
 */ 
