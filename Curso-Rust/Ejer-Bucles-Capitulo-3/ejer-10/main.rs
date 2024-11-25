@@ -46,7 +46,7 @@ fn main() {
                                 // if exp_regex.is_match(&num.to_string()) {
                                 if data_ok {
 
-                                    if  num != 0 /* num > 0 || num < 0 */ {
+                                    if num > 0 && num <= 10 /* num != 0 */ /* num > 0 || num < 0 */ {
                                         println!("\nTabla de Multiplicar Número {}\n", num);
                                         show_tabla_multiplicar(num);
 
