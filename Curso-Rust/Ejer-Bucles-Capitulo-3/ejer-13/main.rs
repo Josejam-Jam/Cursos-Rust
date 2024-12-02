@@ -10,8 +10,8 @@ fn main() {
     const NUM_MAX_CALIFICACIONES: i32 = 6;
     // let mut nota_int: i32;
     let mut nota_float: f32;
-    // let mut array_calificaciones: [bool;5];
-    // let mut vec_calificaciones = vec![false, false, false, false, false];
+    // let mut array_calificaciones: [bool;6];
+    // let mut vec_calificaciones = vec![false, false, false, false, false, false];
     let mut vec_calificaciones_suspensos: Vec<bool> = Vec::new();
     let mut vec_calificaciones_condicionados: Vec<bool> = Vec::new();
     let mut vec_calificaciones_aprobados: Vec<bool> = Vec::new();
