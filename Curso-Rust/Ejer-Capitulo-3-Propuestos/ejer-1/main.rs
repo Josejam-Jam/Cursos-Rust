@@ -73,7 +73,8 @@ fn show_guasismos_num(num: i32, num_lenght: u32) {
 
             println!("\n{}\n", aux_num / aux);
 
-            aux_num = aux_num - ((aux_num / aux) * aux);
+            // aux_num = aux_num - ((aux_num / aux) * aux);
+            aux_num -= (aux_num / aux) * aux;
 
             aux /= 10;
 
