@@ -46,18 +46,18 @@ fn main() {
                             }
                     }
 
-            }
+                }
 
-    }
+        }
 
-    if data_ok {
-        /*  FUNCIÓN QUE INCLUYE UN DELAY DE TIEMPO Y MECANISMOS DE SALIDA PARA EVITAR COLAPSOS Y BUCLES INFINITOS    */
-        //get_eco_repetitions(num);
+        if data_ok {
+            /*  FUNCIÓN QUE INCLUYE UN DELAY DE TIEMPO Y MECANISMOS DE SALIDA PARA EVITAR COLAPSOS Y BUCLES INFINITOS    */
+            //get_eco_repetitions(num);
 
-        /*  FUNCIÓN QUE DEVUELVE EL MENSAJE ECO N VECES INTRODUCIDAS POR PARÁMETRO    */
+            /*  FUNCIÓN QUE DEVUELVE EL MENSAJE ECO N VECES INTRODUCIDAS POR PARÁMETRO    */
 
-        eco(num);
-    }
+            eco(num);
+        }
 
 }
 
