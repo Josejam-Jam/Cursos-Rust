@@ -186,7 +186,6 @@ fn is_iteration_negative(rang_data: Vec<i32>) -> bool {
 
         if (are_positives(rang_data[0], rang_data[1]) || are_negatives(rang_data[0], rang_data[1]) || rang_data[0] > rang_data[1]) && rang_data[0] >= rang_data[1] {
             result = true;
-            println!("\tEntra es_iteración negativa\n");
         }
 
 
