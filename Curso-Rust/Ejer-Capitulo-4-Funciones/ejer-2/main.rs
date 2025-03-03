@@ -156,7 +156,7 @@ fn is_iteration_positive(rang_data: Vec<i32>) -> bool {
     let mut result = false;
     /*  [ OPTIONS 2 ] */
     /*  let aux_rang = rang_data.clone();
-    let aux_rang = rang_data;
+        let aux_rang = rang_data;
     */
         /*  [ OPTIONS 2 ] */
         /*  if (are_positives(aux_rang[0], aux_rang[1]) || are_negatives(aux_rang[0], aux_rang[1]) || aux_rang[0] < aux_rang[1]) && aux_rang[0] <= aux_rang[1] {
@@ -175,7 +175,7 @@ fn is_iteration_negative(rang_data: Vec<i32>) -> bool {
     let mut result = false;
     /*  [ OPTIONS 2 ] */
     /*  let aux_rang = rang_data.clone();
-    let aux_rang = rang_data;
+        let aux_rang = rang_data;
     */
 
         /*  [ OPTIONS 2 ] */
