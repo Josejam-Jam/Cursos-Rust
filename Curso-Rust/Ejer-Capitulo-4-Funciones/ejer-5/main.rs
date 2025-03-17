@@ -125,7 +125,6 @@ fn main() {
                         /*  *** VERSIÓN QUE RECIBE UN VECTOR<I32>  DE ELEM TIPO : I32       */
                         let num_mayor : i32 = get_num_mayor(data_nums);
 
-
                         println!("\tEl Número Mayor [ {} , {} , {} ]\t es:\t{}\n", num_1, num_2, num_3, num_mayor);
                     
                     }
@@ -195,23 +194,30 @@ fn get_num_mayor(data_nums: Vec<i32>) -> i32 {
         /*  *** OPCIÓN 2    Versión EXCLUSIVA Y ENFOCADA PARA UN VEC<I32>.LEN() == *??  TAM == INDETERMINADO  */ 
 
     let mut ind: usize = 0;
+    let size_vec_data: usize = data_nums.len();
 
         for i in data_nums.iter() {
 
-            // if ind == 3 {   /*break;*/  return result; }
-            if ind + 1 < 3 {
+            // if ind == 3 {  return result; }
+            // if ind + 1 < 3 {
+            if ind + 1 < size_vec_data {
                 let aux_data = data_nums[ind + 1 as usize];
             
                     //if *i as i32 > aux_data {
                     if is_mayor(*i as i32, aux_data) {
                         result = *i;
                     } else {
-                        result = aux_data;
+                        if result < aux_data {
+                            result = aux_data;
+                        } else {
+                            result = result;
+                        } 
                     }
             
                 ind += 1;
 
-                if ind == 3 {   break;  }
+                // if ind == 3 {   break;  }
+                if ind == size_vec_data {   break;  }
             }
             
         }
