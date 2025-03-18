@@ -41,7 +41,6 @@ fn main() {
                             data_ok = (exp_regex_vocal.is_match(&caracter.trim().to_string()) || exp_regex_caracter.is_match(&caracter.trim().to_string())) && caracter.to_string().len() == 1;
     
                                 if data_ok {
-                                    /*      *** HACER FUNCIÓN QUE RECIBA UN SÓLO CARÁCTER Y DEVUELVA [ TRUE || FALSE ] SI ES VOCAL       */
                                     break;
                                 }
                         }
