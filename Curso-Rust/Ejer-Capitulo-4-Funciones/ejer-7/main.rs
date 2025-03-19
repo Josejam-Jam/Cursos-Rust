@@ -14,7 +14,6 @@ fn main() {
     let exp_regex_white_space = Regex::new(r"\s+").unwrap();
 
     let mut data_ok: bool;
-    let mut data_ok_all: Vec<bool> = Vec::new();
  
         loop {
             println!("\nIntroduce un Número [ Entero ]");
@@ -37,8 +36,6 @@ fn main() {
                         data_ok = exp_regex.is_match(&num.to_string());
 
                             if data_ok {
-                                data_ok_all.push(true);
-
                                 break;
                             }
                     }
@@ -74,3 +71,4 @@ fn is_primo(num: i32) -> bool {
 
     return result;
 }
+
