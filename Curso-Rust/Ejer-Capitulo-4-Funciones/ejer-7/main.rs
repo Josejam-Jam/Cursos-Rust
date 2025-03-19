@@ -55,7 +55,6 @@ fn main() {
             /*
                 for i in 1..num + 1 {
                     println!("\tEl Número {}\t es Primo:\t{}\n", i, is_primo(i));
-
                 }
             */      
         }
