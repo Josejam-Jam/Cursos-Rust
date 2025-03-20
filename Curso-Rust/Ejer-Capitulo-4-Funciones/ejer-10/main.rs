@@ -31,7 +31,8 @@ fn main() {
             let aux_ok = &entrada.is_empty();
 
                 if !*aux_ok {
-                    let aux_data_ok: bool = exp_regex_caracter.is_match(&entrada.trim().to_string()) || exp_regex_white_space.is_match(&entrada.to_string()) && !exp_regex.is_match(&entrada.trim().to_string());
+                    let aux_data_ok: bool = exp_regex_caracter.is_match(&entrada.trim().to_string()) 
+                            || exp_regex_white_space.is_match(&entrada.to_string()) && !exp_regex.is_match(&entrada.trim().to_string());
 
                     if aux_data_ok {
                         println!("\nError al introducir los Datos");
@@ -61,7 +62,8 @@ fn main() {
             let aux_ok = &entrada.is_empty();
 
                 if !*aux_ok {
-                    let aux_data_ok: bool = exp_regex_caracter.is_match(&entrada.trim().to_string()) || exp_regex_white_space.is_match(&entrada.to_string()) && !exp_regex.is_match(&entrada.trim().to_string());
+                    let aux_data_ok: bool = exp_regex_caracter.is_match(&entrada.trim().to_string()) 
+                            || exp_regex_white_space.is_match(&entrada.to_string()) && !exp_regex.is_match(&entrada.trim().to_string());
 
                     if aux_data_ok {
                         println!("\nError al introducir los Datos");
