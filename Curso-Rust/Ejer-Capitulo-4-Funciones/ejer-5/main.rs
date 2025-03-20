@@ -207,7 +207,7 @@ fn get_num_mayor(data_nums: Vec<i32>) -> i32 {
                 let aux_data = data_nums[ind + 1 as usize];
             
                     //if *i as i32 > aux_data {
-                    // if is_mayor(*i as i32, aux_data) && result < aux_data && ind as i32 >=  {
+                    // if is_mayor(*i as i32, aux_data) && result < aux_data && ind as i32 >= 0 {
                     if is_mayor(*i as i32, aux_data) && !is_mayor(result, aux_data) && ind as i32 >= 0 {
                         result = *i;
                     } else {
