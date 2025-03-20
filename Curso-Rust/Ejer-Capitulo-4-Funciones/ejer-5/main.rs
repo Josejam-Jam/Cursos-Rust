@@ -62,7 +62,8 @@ fn main() {
             let aux_ok = &entrada.is_empty();
 
                 if !*aux_ok {
-                    let aux_data_ok: bool = exp_regex_caracter.is_match(&entrada.trim().to_string()) || exp_regex_white_space.is_match(&entrada.to_string()) && !exp_regex.is_match(&entrada.trim().to_string());
+                    let aux_data_ok: bool = exp_regex_caracter.is_match(&entrada.trim().to_string()) 
+                            || exp_regex_white_space.is_match(&entrada.to_string()) && !exp_regex.is_match(&entrada.trim().to_string());
 
                     if aux_data_ok {
                         println!("\nError al introducir los Datos");
@@ -92,7 +93,8 @@ fn main() {
             let aux_ok = &entrada.is_empty();
 
                 if !*aux_ok {
-                    let aux_data_ok: bool = exp_regex_caracter.is_match(&entrada.trim().to_string()) || exp_regex_white_space.is_match(&entrada.to_string()) && !exp_regex.is_match(&entrada.trim().to_string());
+                    let aux_data_ok: bool = exp_regex_caracter.is_match(&entrada.trim().to_string()) 
+                            || exp_regex_white_space.is_match(&entrada.to_string()) && !exp_regex.is_match(&entrada.trim().to_string());
 
                     if aux_data_ok {
                         println!("\nError al introducir los Datos");
@@ -204,13 +206,12 @@ fn get_num_mayor(data_nums: Vec<i32>) -> i32 {
             if ind + 1 < size_vec_data {
                 let aux_data = data_nums[ind + 1 as usize];
             
-                    //if *i as i32 > aux_data {
-                    if is_mayor(*i as i32, aux_data) && result != 0{
+                    //if *i as i32 > aux_data && ind as i32 >= 0 {
+                    if is_mayor(*i as i32, aux_data) && ind as i32 >= 0 {
+
                         result = *i;
+
                     } else {
-                        /*if result < aux_data {
-                            result = aux_data;
-                        }*/ 
 
                         if !is_mayor(result, aux_data) {
                             result = aux_data;
