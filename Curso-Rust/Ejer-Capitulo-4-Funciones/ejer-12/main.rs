@@ -7,6 +7,15 @@
                         multiplicación y 4 para la división.
 */
 
+            /*  *** TO DO   IMPRIMIR EL TIPO DE OPERACIÓN PREVIO A LA LLAMADA A LA FUNCIÓN CALCULADORA
+
+                    DISEÑAR FUNCIÓN PARA LAS FUTURAS MODIFICACIONES Y/O AMPLIACIONES
+
+                *** TO DO   REALIZAR UNA VERSIÓN PARA LA RECEPCIÓN DE PARÁMETROS TIPO FLOAT,
+                            TANTO PARA LA ENTRADA DE DATOS, ASÍ COMO PARA LA PARAMETRIZACIÓN DE LAS FUNCIONES
+                    
+            */
+
 use std::io;
 use std::str::FromStr;
 use regex::Regex;
@@ -21,10 +30,10 @@ fn main() {
     let exp_regex = Regex::new(r"\d+").unwrap();
     let exp_regex_caracter = Regex::new(r"[a-zA-Z]+").unwrap();
     let exp_regex_white_space = Regex::new(r"\s+").unwrap();
+    /*  *** REGEX PARA LA VERSIÓN DE TIPOS FLOAT      */
     /*let exp_regex_data_incomplete = Regex::new(r"(\d+)[\,||\.||\']").unwrap();
 
     let exp_regex_num_float = Regex::new(r"\d+\.\d+").unwrap();
-    let exp_regex_num_negative = Regex::new(r"-\d+").unwrap();
     */
 
     let mut data_ok: bool;
@@ -47,13 +56,14 @@ fn main() {
                         println!("\nError al introducir los Datos 1");
                     }
 
+                    /*  *** REGEX PARA LA VERSIÓN DE TIPOS FLOAT      */
                     //let aux_data_incomplete: bool = exp_regex_data_incomplete.is_match(&entrada.to_string()) && !exp_regex_num_float.is_match(&entrada.to_string());
 
                     // if aux_data_incomplete {
                     //     println!("\nError al introducir los Datos 2");
                     // }
 
-                    if !aux_data_ok || !aux_data_incomplete {
+                    if !aux_data_ok {
 
                         if exp_regex.is_match(&entrada.to_string()) {
                             operando_1 = i32::from_str(&entrada.trim()).unwrap();
@@ -88,15 +98,16 @@ fn main() {
                         println!("\nError al introducir los Datos 1");
                     }
 
+                    /*  *** REGEX PARA LA VERSIÓN DE TIPOS FLOAT      */
                     // let aux_data_incomplete: bool = exp_regex_data_incomplete.is_match(&entrada.to_string()) && !exp_regex_num_float.is_match(&entrada.to_string());
 
                     // if aux_data_incomplete {
                     //     println!("\nError al introducir los Datos 2");
                     // }
 
-                    if !aux_data_ok || !aux_data_incomplete {
+                    if !aux_data_ok {
 
-                        if exp_regex_num_float.is_match(&entrada.to_string()) {
+                        if exp_regex.is_match(&entrada.to_string()) {
                             operando_2 = i32::from_str(&entrada.trim()).unwrap();
     
                             data_ok = exp_regex.is_match(&operando_2.to_string());
@@ -115,7 +126,7 @@ fn main() {
 
         loop {
 
-            print_submenu_data_Calculadora();
+            print_submenu_data_calculadora();
 
             println!("\nIntroduce un Número [ Operación ] [ 1 - 4 ]");
             let mut entrada = String::new();
@@ -132,6 +143,7 @@ fn main() {
                         println!("\nError al introducir los Datos 1");
                     }
 
+                    /*  *** REGEX PARA LA VERSIÓN DE TIPOS FLOAT      */
                     // let aux_data_incomplete: bool = exp_regex_data_incomplete.is_match(&entrada.to_string()) && !exp_regex_num_float.is_match(&entrada.to_string());
 
                     // if aux_data_incomplete {
@@ -185,11 +197,11 @@ fn is_all_data_ok(data_ok_all: Vec<bool>) -> bool {
     return result;
 }
 
-fn print_submenu_data_Calculadora() {
+fn print_submenu_data_calculadora() {
     println!("\n\t\t\tMENÚ\n\n" );
     println!("\t1.\tCalcula Suma");
-    println!("\t2.\tCalcula Resta\n\n");
-    println!("\t3.\tCalcula Multiplicación\n\n");
+    println!("\t2.\tCalcula Resta");
+    println!("\t3.\tCalcula Multiplicación");
     println!("\t4.\tCalcula División\n\n");
 }
 
@@ -205,46 +217,36 @@ fn get_multiplicacion(operando_1: i32, operando_2: i32) -> i32 {
     return operando_1 * operando_2;
 }
 
-fn get_división(operando_1: i32, operando_2: i32) -> i32 {
+fn get_division(operando_1: i32, operando_2: i32) -> i32 {
     return operando_1 / operando_2;
 }
-/*  *** TO DO   IMPRIMIR EL TIPO DE OPERACIÓN PREVIO A LA LLAMADA A LA FUNCIÓN CALCULADORA
 
-        DISEÑAR FUNCIÓN PARA LAS FUTURAS MODIFICACIONES Y/O AMPLIACIONES
-
-    *** TO DO   REALIZAR UNA VERSIÓN PARA LA RECEPCIÓN DE PARÁMETROS TIPO FLOAT,
-                TANTO PARA LA ENTRADA DE DATOS, ASÍ COMO PARA LA PARAMETRIZACIÓN DE LAS FUNCIONES
-        
-*/
-
-fn print_details_operations(operando_1: i32, operado_2: i32, operation: i32) {
-    let mut result: String = String::new();
-
-        result = operando_1.to_string();
+fn print_details_operations(operando_1: i32, operando_2: i32, operation: i32) {
+    let mut result: String = operando_1.to_string();
 
             if operation == 1 { 
-                result = result + " + ".to_string() + operando_2.to_string() + " = ".to_string();
+                result = result + " + " + &operando_2.to_string() + " = ";
             }
 
             if operation == 2 {
-                result = result + " - ".to_string() + operando_2.to_string() + " = ".to_string();
+                result = result + " - " + &operando_2.to_string() + " = ";
             }
             
             if operation == 3 {
-                result = result + " * ".to_string() + operando_2.to_string() + " = ".to_string();
+                result = result + " * " + &operando_2.to_string() + " = ";
             }
             
             if operation == 4 { 
-                result = result + " / ".to_string() + operando_2.to_string() + " = ".to_string();
+                result = result + " / " + &operando_2.to_string() + " = ";
             } 
 
 
-    println!("{}", result);
+    print!("{}", result);
 }
 
 
 fn calculadora(operando_1: i32, operando_2: i32, operation: i32) {
-    let result: String = "";
+    let mut result: String = String::new();
 
         if operation == 1 {
             result = get_suma(operando_1, operando_2).to_string();
@@ -257,7 +259,7 @@ fn calculadora(operando_1: i32, operando_2: i32, operation: i32) {
         if operation == 3 {
             
             if operando_1 == 0 || operando_2 == 0 {
-                result = "0";
+                result = "0".to_string();
             } else {
                 result = get_multiplicacion(operando_1, operando_2).to_string();
             }
@@ -267,11 +269,11 @@ fn calculadora(operando_1: i32, operando_2: i32, operation: i32) {
 
             if operando_1 == 0 || operando_2 == 0 {
                 if operando_1 == 0 && operando_2 >= 0 {
-                    result = "Indeterminación";
+                    result = "Indeterminación".to_string();
                 }
 
                 if operando_2 == 0 && operando_1 >= 0 {
-                    result = "Indeterminación";
+                    result = "Indeterminación".to_string();
                 }      
 
             } else {
@@ -280,8 +282,11 @@ fn calculadora(operando_1: i32, operando_2: i32, operation: i32) {
             
         }
 
-    print_details_operations(operando_1, operando_2, operation) + "\t" + result.to_string();
+    println!("");    
 
-    println!("Resultado:\t{}\n", result);
+    print_details_operations(operando_1, operando_2, operation);
+
+    print!("\t{}\n", result.to_string());
+
+    println!("\nResultado:\t{}\n", result);
 }
-
