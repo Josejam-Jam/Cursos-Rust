@@ -4,6 +4,13 @@
 
 */
 
+            /*  ***     TO DO   FUTURIBLE REALIZAR UNA VERSIÓN PARA EL CÁLCULO DE LA POTENCIA CON UN EXPONENTE NEGATIVO
+
+                ***     TO DO   REALIZAR UNA VERSIÓN PARA LA RECEPCIÓN DE PARÁMETRO [EXP]  TIPO FLOAT,
+                                TANTO PARA LA ENTRADA DE DATOS PARÁMETRO [EXP], 
+                                ASÍ COMO PARA LA PARAMETRIZACIÓN DE LAS FUNCIONES PARÁMETRO [EXP]       
+            */
+
 use std::io;
 use std::str::FromStr;
 use regex::Regex;
@@ -36,31 +43,28 @@ fn main() {
                     let aux_data_ok: bool = exp_regex_caracter.is_match(&entrada.trim().to_string()) 
                             || exp_regex_white_space.is_match(&entrada.to_string()) && !exp_regex.is_match(&entrada.trim().to_string());
 
-                    if aux_data_ok  {
-                        println!("\nError al introducir los Datos 1");
-                    }
+                    let aux_data_incomplete: bool = exp_regex_data_incomplete.is_match(&entrada.to_string()) 
+                            && !exp_regex_num_float.is_match(&entrada.to_string());
 
-                    let aux_data_incomplete: bool = exp_regex_data_incomplete.is_match(&entrada.to_string()) && !exp_regex_num_float.is_match(&entrada.to_string());
-
-                    if aux_data_incomplete {
-                        println!("\nError al introducir los Datos 2");
-                    }
-
-                    if !aux_data_ok || !aux_data_incomplete {
-
-                        if exp_regex_num_float.is_match(&entrada.to_string()) {
-                            num = f32::from_str(&entrada.trim()).unwrap();
-    
-                            data_ok = exp_regex_num_float.is_match(&num.to_string());
-        
-                                if data_ok{
-    
-                                    data_ok_all.push(true);
-    
-                                    break;
-                                }
+                        if aux_data_ok || aux_data_incomplete {
+                            println!("\nError al introducir los Datos");
                         }
-                    }
+
+                        if !aux_data_ok || !aux_data_incomplete {
+
+                            if exp_regex_num_float.is_match(&entrada.to_string()) {
+                                num = f32::from_str(&entrada.trim()).unwrap();
+        
+                                data_ok = exp_regex_num_float.is_match(&num.to_string());
+            
+                                    if data_ok{
+        
+                                        data_ok_all.push(true);
+        
+                                        break;
+                                    }
+                            }
+                        }
                     
                 }
         }
@@ -80,22 +84,22 @@ fn main() {
                             && !exp_regex.is_match(&entrada.trim().to_string()) 
                             && exp_regex_num_negative.is_match(&entrada.to_string());
 
-                    if aux_data_ok {
-                        println!("\nError al introducir los Datos");
-                    }
+                        if aux_data_ok {
+                            println!("\nError al introducir los Datos");
+                        }
 
-                    if exp_regex.is_match(&entrada.trim().to_string()) && !exp_regex_num_negative.is_match(&entrada.to_string()) {
-                        exp = i32::from_str(&entrada.trim()).unwrap();
+                        if exp_regex.is_match(&entrada.trim().to_string()) && !exp_regex_num_negative.is_match(&entrada.to_string()) {
+                            exp = i32::from_str(&entrada.trim()).unwrap();
 
-                        data_ok = !exp_regex_num_negative.is_match(&entrada.to_string());
+                            data_ok = !exp_regex_num_negative.is_match(&entrada.to_string());
 
-                            if data_ok {
+                                if data_ok {
 
-                                data_ok_all.push(true);
+                                    data_ok_all.push(true);
 
-                                break;
-                            }
-                    }
+                                    break;
+                                }
+                        }
                 }
         }
 

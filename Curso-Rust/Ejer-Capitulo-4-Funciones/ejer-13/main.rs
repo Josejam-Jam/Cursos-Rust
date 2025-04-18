@@ -41,39 +41,39 @@ fn main() {
                 if !*aux_ok {
                     let aux_data_ok: bool = exp_regex_caracter.is_match(&entrada.trim().to_string()) 
                             || exp_regex_white_space.is_match(&entrada.to_string()) 
-                            && !exp_regex.is_match(&entrada.trim().to_string()) 
-                            && exp_regex_num_negative.is_match(&entrada.to_string());
+                            && !exp_regex.is_match(&entrada.trim().to_string());
 
-                    if aux_data_ok  {
-                        println!("\nError al introducir los Datos 1");
-                    }
+                    let aux_data_negative = exp_regex_num_negative.is_match(&entrada.to_string());
 
-                    /*  *** REGEX PARA LA VERSIÓN DE TIPOS FLOAT      */
-                    //let aux_data_incomplete: bool = exp_regex_data_incomplete.is_match(&entrada.to_string()) && !exp_regex_num_float.is_match(&entrada.to_string());
-
-                    // if aux_data_incomplete {
-                    //     println!("\nError al introducir los Datos 2");
-                    // }
-
-                    if !aux_data_ok {
-
-                        if exp_regex.is_match(&entrada.trim().to_string()) && !exp_regex_num_negative.is_match(&entrada.to_string()) {
-                            num = i32::from_str(&entrada.trim()).unwrap();
-
-                            data_ok = exp_regex.is_match(&num.to_string());
-        
-                                if data_ok{
-
-                                    data_ok_all.push(true);
-
-                                    break;
-                                }
+                        if aux_data_ok || aux_data_negative {
+                            println!("\nError al introducir los Datos");
                         }
-                    }
+
+                        /*  *** REGEX PARA LA VERSIÓN DE TIPOS FLOAT      */
+                        //let aux_data_incomplete: bool = exp_regex_data_incomplete.is_match(&entrada.to_string()) && !exp_regex_num_float.is_match(&entrada.to_string());
+
+                        // if aux_data_incomplete {
+                        //     println!("\nError al introducir los Datos 2");
+                        // }
+
+                        if !aux_data_ok {
+
+                            if exp_regex.is_match(&entrada.trim().to_string()) && !exp_regex_num_negative.is_match(&entrada.to_string()) {
+                                num = i32::from_str(&entrada.trim()).unwrap();
+
+                                data_ok = exp_regex.is_match(&num.to_string());
+            
+                                    if data_ok{
+
+                                        data_ok_all.push(true);
+
+                                        break;
+                                    }
+                            }
+                        }
                     
                 }
         }
-
         
         if data_ok_all.len() == 1 {
             data_ok = is_all_data_ok(data_ok_all);
@@ -87,7 +87,6 @@ fn main() {
         }
 
 }
-
 
 fn is_all_data_ok(data_ok_all: Vec<bool>) -> bool {
     let mut result: bool = false;
@@ -116,7 +115,7 @@ fn get_calc_factorial_recursive(num: i32) -> i32 {
                 
     } 
 }
-
+/* 
 /*  *** FN CÁLCULA && SHOW FACTORIAL DE UN NÚMERO NEGATIVO       */
 fn get_calc_factorial_num_negative_recursive(num: i32) -> i32 {
     if num == 0 { 
@@ -128,4 +127,4 @@ fn get_calc_factorial_num_negative_recursive(num: i32) -> i32 {
                 
     }  
 }
-
+*/

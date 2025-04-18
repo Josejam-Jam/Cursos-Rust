@@ -28,20 +28,20 @@ fn main() {
                     let aux_data_ok: bool = exp_regex_caracter.is_match(&entrada.trim().to_string()) 
                             || exp_regex_white_space.is_match(&entrada.to_string()) && !exp_regex.is_match(&entrada.trim().to_string());
 
-                    if aux_data_ok {
-                        println!("\nError al introducir los Datos");
-                    }
+                        if aux_data_ok {
+                            println!("\nError al introducir los Datos");
+                        }
 
-                    if exp_regex.is_match(&entrada.trim().to_string()) {
-                        num = i32::from_str(&entrada.trim()).unwrap();
+                        if exp_regex.is_match(&entrada.trim().to_string()) {
+                            num = i32::from_str(&entrada.trim()).unwrap();
 
-                        data_ok = exp_regex.is_match(&num.to_string());
+                            data_ok = exp_regex.is_match(&num.to_string());
 
-                            if data_ok {
+                                if data_ok {
 
-                                break;
-                            }
-                    }
+                                    break;
+                                }
+                        }
                 }
         }
         

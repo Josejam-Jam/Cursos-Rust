@@ -65,7 +65,7 @@ fn main() {
 
                     if !aux_data_ok {
 
-                        if exp_regex.is_match(&entrada.to_string()) {
+                        if exp_regex.is_match(&entrada.trim().to_string()) {
                             operando_1 = i32::from_str(&entrada.trim()).unwrap();
     
                             data_ok = exp_regex.is_match(&operando_1.to_string());
@@ -139,32 +139,32 @@ fn main() {
                     let aux_data_ok: bool = exp_regex_caracter.is_match(&entrada.trim().to_string()) 
                             || exp_regex_white_space.is_match(&entrada.to_string()) && !exp_regex.is_match(&entrada.trim().to_string());
 
-                    if aux_data_ok  {
-                        println!("\nError al introducir los Datos 1");
-                    }
+                        if aux_data_ok  {
+                            println!("\nError al introducir los Datos 1");
+                        }
 
-                    /*  *** REGEX PARA LA VERSIÓN DE TIPOS FLOAT      */
-                    // let aux_data_incomplete: bool = exp_regex_data_incomplete.is_match(&entrada.to_string()) && !exp_regex_num_float.is_match(&entrada.to_string());
+                        /*  *** REGEX PARA LA VERSIÓN DE TIPOS FLOAT      */
+                        // let aux_data_incomplete: bool = exp_regex_data_incomplete.is_match(&entrada.to_string()) && !exp_regex_num_float.is_match(&entrada.to_string());
 
-                    // if aux_data_incomplete {
+                        // if aux_data_incomplete {
                     //     println!("\nError al introducir los Datos 2");
                     // }
 
-                    if !aux_data_ok {
+                        if !aux_data_ok {
 
-                        if exp_regex.is_match(&entrada.to_string()) {
-                            num_operation = i32::from_str(&entrada.trim()).unwrap();
-    
-                            data_ok = exp_regex.is_match(&num_operation.to_string());
+                            if exp_regex.is_match(&entrada.to_string()) {
+                                num_operation = i32::from_str(&entrada.trim()).unwrap();
         
-                                if data_ok && ( num_operation >= 1 && num_operation <= 4 )  {
-    
-                                    data_ok_all.push(true);
-    
-                                    break;
-                                }
+                                data_ok = exp_regex.is_match(&num_operation.to_string());
+            
+                                    if data_ok && ( num_operation >= 1 && num_operation <= 4 )  {
+        
+                                        data_ok_all.push(true);
+        
+                                        break;
+                                    }
+                            }
                         }
-                    }
                     
                 }
         }

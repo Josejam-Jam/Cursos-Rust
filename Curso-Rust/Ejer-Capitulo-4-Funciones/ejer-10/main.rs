@@ -34,22 +34,22 @@ fn main() {
                     let aux_data_ok: bool = exp_regex_caracter.is_match(&entrada.trim().to_string()) 
                             || exp_regex_white_space.is_match(&entrada.to_string()) && !exp_regex.is_match(&entrada.trim().to_string());
 
-                    if aux_data_ok {
-                        println!("\nError al introducir los Datos");
-                    }
+                        if aux_data_ok {
+                            println!("\nError al introducir los Datos");
+                        }
 
-                    if exp_regex.is_match(&entrada.trim().to_string()) {
-                        num_1 = i32::from_str(&entrada.trim()).unwrap();
+                        if exp_regex.is_match(&entrada.trim().to_string()) {
+                            num_1 = i32::from_str(&entrada.trim()).unwrap();
 
-                        data_ok = exp_regex.is_match(&num_1.to_string());
+                            data_ok = exp_regex.is_match(&num_1.to_string());
 
-                            if data_ok {
+                                if data_ok {
 
-                                data_ok_all.push(true);
+                                    data_ok_all.push(true);
 
-                                break;
-                            }
-                    }
+                                    break;
+                                }
+                        }
                 }
         }
 
@@ -65,22 +65,22 @@ fn main() {
                     let aux_data_ok: bool = exp_regex_caracter.is_match(&entrada.trim().to_string()) 
                             || exp_regex_white_space.is_match(&entrada.to_string()) && !exp_regex.is_match(&entrada.trim().to_string());
 
-                    if aux_data_ok {
-                        println!("\nError al introducir los Datos");
-                    }
+                        if aux_data_ok {
+                            println!("\nError al introducir los Datos");
+                        }
 
-                    if exp_regex.is_match(&entrada.trim().to_string()) {
-                        num_2 = i32::from_str(&entrada.trim()).unwrap();
+                        if exp_regex.is_match(&entrada.trim().to_string()) {
+                            num_2 = i32::from_str(&entrada.trim()).unwrap();
 
-                        data_ok = exp_regex.is_match(&num_2.to_string());
+                            data_ok = exp_regex.is_match(&num_2.to_string());
 
-                            if data_ok {
+                                if data_ok {
 
-                                data_ok_all.push(true);
+                                    data_ok_all.push(true);
 
-                                break;
-                            }
-                    }
+                                    break;
+                                }
+                        }
                 }
         }
 
@@ -90,7 +90,7 @@ fn main() {
                 if data_ok {
 
                     let result : bool = are_friends(num_1, num_2);
-                    println!("\nLos Números [ {}, {} ]\t¿Son Números Amigo?\t{}\n", num_1, num_2, result);
+                    println!("\nLos Números [ {}, {} ]\t¿Son Números Amigos?\t{}\n", num_1, num_2, result);
                     
                 }
         }
