@@ -1,4 +1,4 @@
-/*      Ejer    11      Diseñar la función ( fun ) calculadora ( num1: i32, num2: i32 ), a la que se pasan dos
+/*      Ejer    12      Diseñar la función ( fun ) calculadora ( num1: i32, num2: i32 ), a la que se pasan dos
                         números enteros ( operandos ) y qué operación se desea realizar con ellos. 
 
                         Las operaciones disponibles son: sumar, restar, multiplicar o dividir.
