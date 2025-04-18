@@ -106,10 +106,12 @@ fn main() {
                 if data_ok {
 
                     let result_potencia: f32 = get_elevar_potencia(num, exp);
-                    let result_potencia_2: f32 = get_elevar_potencia_iterativa(num, exp);
+                    let result_potencia_iterative: f32 = get_elevar_potencia_iterativa(num, exp);
+                    let result_potencia_recursive: f32 = get_elevar_potencia_recursive(num, exp); 
 
-                    println!("\nLos Resultado de la potencia [ {}, {} ]\tResultado\t{}\n", num, exp, result_potencia);
-                    println!("\nLos Resultado de la potencia [ {}, {} ]\tResultado\t{}\n", num, exp, result_potencia_2);
+                    println!("\nResultado de la potencia [ {}, {} ] fn [ num.powf(exp:f32) ]\tResultado\t{}\n", num, exp, result_potencia);
+                    println!("\nResultado de la potencia [ {}, {} ] fn iterativa\tResultado\t{}\n", num, exp, result_potencia_iterative);
+                    println!("\nResultado de la potencia [ {}, {} ] fn recursiva \tResultado\t{}\n", num, exp, result_potencia_recursive);
 
                 }
         }
@@ -147,3 +149,15 @@ fn get_elevar_potencia_iterativa(num: f32, exp: i32) -> f32 {
     return result;
 }
 
+fn get_elevar_potencia_recursive(num: f32, exp: i32) -> f32 {
+    
+    if exp == 0 { 
+        return 1.0;  
+                
+    } else {
+               
+        return num * get_elevar_potencia_recursive(num, exp - 1);
+                        
+    } 
+}
+   
