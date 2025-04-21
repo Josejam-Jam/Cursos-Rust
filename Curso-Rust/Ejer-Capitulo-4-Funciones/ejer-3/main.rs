@@ -165,9 +165,9 @@ fn get_volumen_cilindro(radio_base: f32, altura: f32) -> f32 {
     // volumen cilindro = π * r² * h
 
     const PI:f32 = std::f32::consts::PI;
-    // let result : f32 = PI * radio_base.powf(2.0) + altura;
+    // let result : f32 = PI * radio_base.powf(2.0) * altura;
 
-    return PI * radio_base.powf(2.0) + altura;
+    return PI * radio_base.powf(2.0) * altura;
 }
 
 fn get_area_total_cilindro(radio_base: f32, altura: f32) -> f32 {
