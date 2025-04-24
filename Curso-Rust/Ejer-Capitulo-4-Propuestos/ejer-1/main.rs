@@ -20,7 +20,7 @@ fn main() {
     let exp_regex_caracter = Regex::new(r"[a-zA-Z]+").unwrap();
     let exp_regex_white_space = Regex::new(r"\s+").unwrap();
 
-    let exp_regex_num_negative = Regex::new(r"(-\d+)||(-\d+\.\d+)").unwrap();
+    let exp_regex_num_negative = Regex::new(r"(-\d+)").unwrap();
 
     /*  *** REGEX PARA LA VERSIÓN DE TIPOS FLOAT      */
     let exp_regex_data_incomplete = Regex::new(r"(\d+)[\,||\.||\']").unwrap();
@@ -60,7 +60,8 @@ fn main() {
                             if exp_regex_num_float.is_match(&entrada.to_string()) && !exp_regex_num_float_negative.is_match(&entrada.to_string()) {
                                 radio = f32::from_str(&entrada.trim()).unwrap();
 
-                                data_ok = exp_regex_num_float.is_match(&radio.to_string()) && !exp_regex_num_float_negative.is_match(&entrada.to_string());
+                                data_ok = exp_regex_num_float.is_match(&radio.to_string()) 
+                                    && !exp_regex_num_float_negative.is_match(&entrada.to_string());
             
                                     if data_ok{
 
