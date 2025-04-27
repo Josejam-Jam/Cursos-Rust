@@ -70,7 +70,7 @@ fn main() {
 
                                 /*  *** AJUSTES EN LA RECEPCIÓN DE DATOS 00 || 0     */
                     
-                                    if data_ok && (hora_2 <= 23 && hora_2 >= 0) {
+                                    if data_ok && (hora_1 <= 23 && hora_1 >= 0) {
                 
                                         data_ok_all.push(true);
                 
@@ -178,7 +178,7 @@ fn main() {
 
 
         loop {
-            println!("\nIntroduce Hora Instante 1 [ ENTERO ] Formato [ 24 H ]");
+            println!("\nIntroduce Minutos Instante 2 [ ENTERO ] Formato [ 24 H ]");
             let mut entrada = String::new();
         
             io::stdin().read_line(&mut entrada).expect("Error en la lectura de datos");
@@ -239,7 +239,7 @@ fn main() {
 
                     show_instante_tiempo(_instante_2);
 
-                    println!("\nCantidad de Minutos Totales:\t {}\tseg\n", _min_totales);
+                    println!("\nCantidad de Minutos Totales:\t {}\tmin\n", _min_totales);
 
                 }
         }
@@ -265,46 +265,83 @@ fn get_minutos_horas(horas: i32) -> i32 {
     return horas * 60;
 }
 
-fn get_diferencia_min_horas(hora_1: i32, hora_2: i32) -> i32 {
-    let result: i32;
+/* **   Implementar la entrada de los parámetros min para evaluar las comparativas ( x < 1 h ) menores de 1 hora 
+    
+    *** TO DO     IMPLEMENTAR LA LÓGICA EN EL MISMO CLOSURE DE LA FUNCIÓN GENERAL QUE EVALUA EL TOTAL DE HORAS Y MIN
 
-        if (hora_1 > hora_2) && hora_1 <= 23  {
+            EN ESTA VERSIÓN HAY BUGS  EN 2 CASUÍSTICAS YA QUE SE IMPLEMENTAN DE FORMA SEPARADA LA EVALUACIÓN
+            DE ENTRADA DE DATOS HORAS-MINS  
+*/
+
+/* TO DO MODIFICACIONES     REV  */
+fn get_diferencia_min_horas(hora_1: i32, min_1: i32, hora_2: i32) -> i32 {
+    let mut result: i32 = 0;
+
+        if (hora_1 > hora_2) && hora_1 <= 23 && hora_2 != 0  {
+
             result = get_minutos_horas(hora_2 + 1);
-        }
 
-        if (hora_1 < hora_2) && hora_2 <= 23 {
+            println!("Entra 1\n");
+
+        } else if (hora_1 < hora_2) && hora_2 <= 23 {
+
             result = get_minutos_horas(hora_2 - hora_1);
+
+            println!("Entra 2\n");
+
+        } else {
+            println!("Entra 3\n");
+
+            if (hora_1 <= 23) && hora_2 >= 0 {
+
+                /*if hora_1 == 0 && hora_2 == 0 {
+                    result = 0;
+                }*/
+                println!("Entra 4\n");
+
+                if hora_2 == 0 && min_1 == 0 {
+                    let aux_horas: i32 = 24 - hora_1;
+
+                    println!("Entra 5\n");
+
+                    result = get_minutos_horas(aux_horas);
+
+                } else {
+                    let aux_horas: i32;
+                        
+                    println!("Entra 6\n");
+
+                        if hora_2 == 0 && min_1 > 0 {
+                            aux_horas = 0;
+
+                            println!("Entra 7\n");
+                        } else {
+
+                            println!("Entra 8\n");
+                            aux_horas = (24 - hora_1) + hora_2;
+                        }
+
+                    //let aux_horas: i32 = (24 - hora_1) + hora_2;
+
+                    result = get_minutos_horas(aux_horas);
+                }
+            } 
         }
-
-        if (hora_1 <= 23) && hora_2 >= 0 {
-
-            if hora_1 == 0 && hora_2 == 0 {
-                result = 0;
-            }
-
-            if hora_2 == 0 {
-                let aux_horas: i32 = 24 - hora_1;
-
-                result = get_minutos_horas(aux_horas);
-            } else {
-                let aux_horas: i32 = (24 - hora_1) + hora_2;
-
-                result = get_minutos_horas(aux_horas);
-            }
-        } 
 
     return result;
 }
-
+/* TO DO MODIFICACIONES     REV  */
 fn get_minutos_mins(min_1: i32, min_2: i32) -> i32 {
     let result: i32;
 
         if min_1 > min_2 {
 
             result = min_1 - min_2;
+
         } else if min_1 < min_2 {
 
             result = min_2 - min_1;
+
         } else {
             result = 0;
         }
@@ -312,10 +349,10 @@ fn get_minutos_mins(min_1: i32, min_2: i32) -> i32 {
     return result;
 }
 
-
+/* TO DO MODIFICACIONES     REV  */
 fn get_diferencia_min(hora_1: i32, min_1: i32, hora_2: i32, min_2: i32) -> i32 {
 
-    let aux_result_min_horas: i32 = get_diferencia_min_horas(hora_1, hora_2);
+    let aux_result_min_horas: i32 = get_diferencia_min_horas(hora_1, min_1, hora_2);
 
     let aux_result_min_mins: i32 = get_minutos_mins(min_1, min_2);
 
@@ -325,14 +362,16 @@ fn get_diferencia_min(hora_1: i32, min_1: i32, hora_2: i32, min_2: i32) -> i32 {
 
 
 fn get_instante_tiempo(hora: i32, mins: i32) -> String {
-    let mut result: String = String::new();
+    // let mut result: String = String::new();
 
-        result = "[ " + hora.to_string() + " : " + mins.to_string() + " ]";
+        // result = "[ ".to_string() + &hora.to_string() + " : " + &mins.to_string() + " ]";
+        return "[ ".to_string() + &hora.to_string() + " : " + &mins.to_string() + " ]";
 
-    return result;
+    // return result;
+    
 }
 
 
 fn show_instante_tiempo(instante_tiempo: String) {
-    println!("Instante de tiempo: {}\t", instante_tiempo);
+    println!("Instante de tiempo: \t{}\t", instante_tiempo);
 }
