@@ -88,10 +88,6 @@ fn main() {
             
                                     if data_ok {
 
-                                        /*if data_salario == -1.0 {
-                                            break;
-                                        }*/
-
                                         data_ok_all.push(true);
 
                                         salarios_all.push(data_salario);
@@ -149,7 +145,6 @@ fn is_all_data_ok(data_ok_all: Vec<bool>) -> bool {
 
 }
 
-/* REVIAR LAS CONDICIONES  CON UN VALOR INTERMEDIO PARA VALORAR EL VALOR ANTERIOR EN RESULT  Y CON PARARLO CON EL ACTUAL Y EL POSTERIOR SI ES POSIBLE   */
 fn get_salario_min(salarios_all: Vec<f32>) -> f32 {
     let mut result: f32 = 0.0;
     let mut aux_value: f32;
@@ -157,7 +152,6 @@ fn get_salario_min(salarios_all: Vec<f32>) -> f32 {
 
         for i in salarios_all.iter() {
             aux_value = *i;
-            // let aux_ind :usize = ((i / 1.0) as i32 + 1) as usize;
 
                 if aux_ind < salarios_all.len() && aux_value < salarios_all[aux_ind] {
                     result = aux_value;
@@ -176,7 +170,6 @@ fn get_salario_min(salarios_all: Vec<f32>) -> f32 {
     return result;
 }
 
-/* REVIAR LAS CONDICIONES  CON UN VALOR INTERMEDIO PARA VALORAR EL VALOR ANTERIOR EN RESULT  Y CON PARARLO CON EL ACTUAL Y EL POSTERIOR SI ES POSIBLE   */
 fn get_salario_max(salarios_all: Vec<f32>) -> f32 {
     let mut result: f32 = 0.0;
     let mut aux_value: f32;
@@ -184,7 +177,6 @@ fn get_salario_max(salarios_all: Vec<f32>) -> f32 {
 
         for i in salarios_all.iter() {
             aux_value = *i;
-            // let aux_ind :usize = ((i / 1.0) as i32 + 1) as usize;
 
                 if aux_ind < salarios_all.len() && (aux_value > salarios_all[aux_ind]) {
                     result = aux_value;
