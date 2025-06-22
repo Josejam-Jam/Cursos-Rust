@@ -133,8 +133,6 @@ fn main() {
                 /*  AQUÍ SE DEBE LIMPIAR DE DATOS EL VECTOR DE DATOS DE VALIDACIÓN DE ENTRADA    */
                 //let mut data_ok_all: <bool> = Vec::new();
                 data_ok_all = Vec::new();
-
-                /*  PROBAR LA FUNCIÓN PERO HASTA AHORA DA UN EXITED O UN WARNING     */
                 
                 loop {
                         println!("\nIntroduce Número de [ Fila || Lugar 1 ]");
@@ -273,15 +271,18 @@ fn main() {
                     }        
 
                 /*  MOSTRAR   */
-                /*    
-                show_data_vector_2d_cuadratica(data_vector_2d_all);  
 
-                show_data_index_vector(data_vector_2d_all.len());*/       
+                /*    
+                    show_data_vector_2d_cuadratica(data_vector_2d_all);  
+
+                    show_data_index_vector(data_vector_2d_all.len());
+                */       
 
             }
                 
         }
-}    
+}
+
 
 fn is_all_data_ok(data_ok_all: Vec<bool>) -> bool {
     let mut result: bool = false;
@@ -298,28 +299,29 @@ fn is_all_data_ok(data_ok_all: Vec<bool>) -> bool {
 
 }
 
+
 /* fn clean_all_values_data_ok(mut data_ok_all: Vec<bool>)  {
     
-    for ind in 0..data_ok_all.len() {
+    /*for ind in 0..data_ok_all.len() {
         //print!("{}", data_ok_all[ind]);
         data_ok_all.remove(ind);
         
     }
-
+    */
 
     /*  COMPROBAR LA SALIDA NONE CON MATCH Y CONSTRUIR LA IMPRESIÓN DEL RESULTADO A PARTIR DE LA EVALUACIÓN   */
-    let mut v = vec![1, 2, 3];
-    match v.pop() {
-        Some(last) => println!("El último elemento es: {}", last),
-        None => println!("El vector está vacío"),
+    match data_ok_all.iter().find(|value| **value == true) {
+        Some(value) => if *value == true {data_ok_all.remove(0);} else if *value == false { data_ok_all.remove(0);},
+        None => println!("\tFalse\n"),
     }
-    println!("El vector después de pop: {:?}", v);
 
-    return data_ok_all;
+    println!("El vector después de Vaciarlo: {:?}", data_ok_all);
+
+    //return data_ok_all;
 }
 */
 
-/*fn clean_all_values_data_ok(mut data_ok_all: Vec<bool>) -> Vec<bool> {
+/* fn clean_all_values_data_ok(mut data_ok_all: Vec<bool>) -> Vec<bool> {
     
     for ind in 0..data_ok_all.len() {
         data_ok_all.remove(ind);
@@ -331,11 +333,11 @@ fn is_all_data_ok(data_ok_all: Vec<bool>) -> bool {
 
 /* fn clean_all_values_data_vector() -> Vec<_> {
 
-}*/
-
-/*
-    vector_data_value.iter().find(|value| **value == true);
+}
 */
+
+/* vector_data_value.iter().find(|value| **value == true);      */
+
 
 /*  CUIDADO CON ESTA IMPLEMENTACIÓN QUE EN LOS CASOS EN NO EXISTAN VALORES TRUE, NO SE DEVUELVE BOOLEANO FALSE NI EL VALOR NONE 
     DEVUELVE UN FALLO DE COMPILACIÓN EN LA EJECUCIÓN DE LA FUNCIÓN PERDIENDO REFERENCIA DEL VALOR
@@ -349,7 +351,6 @@ fn find_true_indata(data_value: Vec<bool>) -> bool {
 
     //return *data_value[0][1].iter().find(|value| **value == true).expect("REASON");
 
-
     match data_value.iter().find(|value| **value == true) {
         Some(value) => return *value,
         None => return false,
@@ -362,7 +363,6 @@ fn find_true_indata(data_value: Vec<bool>) -> bool {
     */
 
 }
-
 
 fn get_values_true(data_filas: i32, mut data_vector: Vec<bool>) -> Vec<bool> {
     /*  **VERSIÓN 2 GENERANDO VECTORES INDIVIDUALES DENTRO DE LA FUNCIÓN   */
@@ -378,7 +378,7 @@ fn get_values_true(data_filas: i32, mut data_vector: Vec<bool>) -> Vec<bool> {
 }
 
 fn get_values_false(data_filas: i32, mut data_vector: Vec<bool>) -> Vec<bool> {
-    /*  TIENE QUE CALCULARSE LA CANTIDAD DE VALORES FALSE RESTANDO EL NÉMERO DE FILAS || COLUMNAS A TOTAL DE VALORES DE LA MATRIZ [ FILAS * COLUMNAS ] 
+    /*  TIENE QUE CALCULARSE LA CANTIDAD DE VALORES FALSE RESTANDO EL NÚMERO DE FILAS || COLUMNAS A TOTAL DE VALORES DE LA MATRIZ [ FILAS * COLUMNAS ] 
         ES DECIR ( FILAS * COLUMNAS ) - FILAS = DATA_ALL_FALSE
     */
     /*  **VERSIÓN 2 GENERANDO VECTORES INDIVIDUALES DENTRO DE LA FUNCIÓN   */
@@ -395,6 +395,7 @@ fn get_values_false(data_filas: i32, mut data_vector: Vec<bool>) -> Vec<bool> {
     return data_vector;
 }
 
+/*  FUN QUE MEZCLA ALEATORIAMENTE LOS DATOS DENTRO DEL PROPIO VECTOR INTRODUCIDO POR PARÁMETRO    */
 fn get_vector_shuffle( mut data_vector: Vec<bool>) -> Vec<bool> {
     // let mut rng = thread_rng();
     let mut rng = rand::rng();
@@ -404,15 +405,19 @@ fn get_vector_shuffle( mut data_vector: Vec<bool>) -> Vec<bool> {
     return data_vector;
 }
 
-
+/*  FUN QUE GENERA LA MATRIZ BIDIMENSIONAL  VEC<VEC<T>>, VECTOR BIDIMENSIONAL, VECTOR DE VECTORES, 
+    SEGÚN LA CANTIDAD FILAS Y DATOS INCLUIDOS EN VECTOR INICIAL POR PARÁMETROS      
+*/
 fn get_matriz_cuadratica(data_filas: i32, data_vector: Vec<bool>) -> Vec<Vec<bool>> {
 
-    /*  GENERARÁ LA MATRIZ A PARTIR DE LOS DATOS INTRODUCIDOS EN LOS VECTORES AÑADIENDO MAYOR ALEATORIEDAD 
-        IGUALANDO LA CANTIDAD DE VALORES TRUE && FALSE A LA HORA DE INTRODUCIR LOS DATOS EN EL VECTOR BIDIMENSIONAL, 
-        BARAJANDO PREVIAMENTE LOS DATOS DENTRO DEL PROPIO VECTOR USADO PARA ASIGNAR LA ALEATORIDAD EN LA INTRODUCCIÓN DE TRUE||FALSE 
+    /*  *** NOTA:  GENERARÁ LA MATRIZ A PARTIR DE LOS DATOS INTRODUCIDOS EN LOS VECTORES, IGUALANDO LA CANTIDAD DE VALORES TRUE A LA CANTIDAD FILAS Y COLUMNAS,
+        Y LOS FALSE AL RESTO DE POSICIONES RESTANTES POR RELLENAR.
+        
+        A LA HORA DE INTRODUCIR LOS DATOS EN EL VECTOR BIDIMENSIONAL, AÑADIENDO MAYOR ALEATORIEDAD, 
+        BARAJARÁN PREVIAMENTE LOS DATOS DENTRO DEL PROPIO VECTOR USADO PARA ASIGNAR LA ALEATORIDAD EN LA INTRODUCCIÓN DE TRUE||FALSE 
 
-        PARA CALCULAR LA MATRIZ CUADRÁTICA, SE ELEGIRÁN LOS VALORES A INTRODUCIR DE FORMA ALEATORIA YA QUE HABRÁN SIDO 
-        INTRODUCIDOS ALEATORIAMENTE Y BARAJADOS, ESE SERÁ EL VECTOR DE VECTORES RESULTANTE.
+        PARA CALCULAR LA MATRIZ CUADRÁTICA, SE ELEGIRÁN LOS VALORES A INTRODUCIR DE FORMA SECUENCIAL YA QUE HABRÁN SIDO 
+        INTRODUCIDOS, BARAJADOS Y POSTERIORMENTE SE CREA EL VECTOR DE VECTORES RESULTANTE.
 
     */
 
