@@ -299,50 +299,11 @@ fn is_all_data_ok(data_ok_all: Vec<bool>) -> bool {
 
 }
 
-
-/* fn clean_all_values_data_ok(mut data_ok_all: Vec<bool>)  {
-    
-    /*for ind in 0..data_ok_all.len() {
-        //print!("{}", data_ok_all[ind]);
-        data_ok_all.remove(ind);
-        
-    }
-    */
-
-    /*  COMPROBAR LA SALIDA NONE CON MATCH Y CONSTRUIR LA IMPRESIÓN DEL RESULTADO A PARTIR DE LA EVALUACIÓN   */
-    match data_ok_all.iter().find(|value| **value == true) {
-        Some(value) => if *value == true {data_ok_all.remove(0);} else if *value == false { data_ok_all.remove(0);},
-        None => println!("\tFalse\n"),
-    }
-
-    println!("El vector después de Vaciarlo: {:?}", data_ok_all);
-
-    //return data_ok_all;
-}
-*/
-
-/* fn clean_all_values_data_ok(mut data_ok_all: Vec<bool>) -> Vec<bool> {
-    
-    for ind in 0..data_ok_all.len() {
-        data_ok_all.remove(ind);
-    }
-
-    return data_ok_all;
-}
-*/
-
-/* fn clean_all_values_data_vector() -> Vec<_> {
-
-}
-*/
-
-/* vector_data_value.iter().find(|value| **value == true);      */
-
-
-/*  CUIDADO CON ESTA IMPLEMENTACIÓN QUE EN LOS CASOS EN NO EXISTAN VALORES TRUE, NO SE DEVUELVE BOOLEANO FALSE NI EL VALOR NONE 
+/*  CUIDADO CON ESTA IMPLEMENTACIÓN CON ITERACIÓN DIRECTA SOBRE EL VECTOR, EN LOS CASOS EN NO EXISTAN VALORES TRUE, 
+    NO SE DEVUELVE BOOLEANO FALSE NI EL VALOR NONE,
     DEVUELVE UN FALLO DE COMPILACIÓN EN LA EJECUCIÓN DE LA FUNCIÓN PERDIENDO REFERENCIA DEL VALOR
 
-    SE ACONSEJA REALIZAR LA ITERACIÓN Y LA BÚSQUEDA EN EL VECTOR DIRECTAMENTE
+    SE ACONSEJA REALIZAR LA ITERACIÓN Y LA BÚSQUEDA EN EL VECTOR DIRECTAMENTE, EN LOS CASOS QUE EXISTAN, FORZOSAMENTE, VALORES TRUE
 */
 
 fn find_true_indata(data_value: Vec<bool>) -> bool {
@@ -364,6 +325,7 @@ fn find_true_indata(data_value: Vec<bool>) -> bool {
 
 }
 
+/*  FUN QUE INSERTA LOS VALORES TRUE EN EL VECTOR PASADO POR PARÁMETRO   */
 fn get_values_true(data_filas: i32, mut data_vector: Vec<bool>) -> Vec<bool> {
     /*  **VERSIÓN 2 GENERANDO VECTORES INDIVIDUALES DENTRO DE LA FUNCIÓN   */
     //**VERSIÓN 2   let mut vec_result: Vec<bool> = Vec::new();   
@@ -377,6 +339,7 @@ fn get_values_true(data_filas: i32, mut data_vector: Vec<bool>) -> Vec<bool> {
     return data_vector;
 }
 
+/*  FUN QUE INSERTA LOS VALORES FALSE RESTANTES  */
 fn get_values_false(data_filas: i32, mut data_vector: Vec<bool>) -> Vec<bool> {
     /*  TIENE QUE CALCULARSE LA CANTIDAD DE VALORES FALSE RESTANDO EL NÚMERO DE FILAS || COLUMNAS A TOTAL DE VALORES DE LA MATRIZ [ FILAS * COLUMNAS ] 
         ES DECIR ( FILAS * COLUMNAS ) - FILAS = DATA_ALL_FALSE
@@ -384,7 +347,7 @@ fn get_values_false(data_filas: i32, mut data_vector: Vec<bool>) -> Vec<bool> {
     /*  **VERSIÓN 2 GENERANDO VECTORES INDIVIDUALES DENTRO DE LA FUNCIÓN   */
     //**VERSIÓN 2   let mut vec_result: Vec<bool> = Vec::new();   
 
-    let num_values_false: i32 = (data_filas * data_filas) - data_filas ;
+    let num_values_false: i32 = (data_filas * data_filas) - data_filas;
 
         for _ind in 0..num_values_false {
             //**VERSIÓN 2   vec_result.push(false);
@@ -470,7 +433,7 @@ fn get_matriz_cuadratica(data_filas: i32, data_vector: Vec<bool>) -> Vec<Vec<boo
     return result_vector_matriz;
 }
 
-
+/*  FUN QUE MUESTRA LOS INDICE DE LA SEGUNDA DIMENSIÓN DE LA MATRIZ [ VECTOR ]   */
 fn show_data_index_vector(data_filas: i32) {
     for ind in 0..data_filas {
             if ind == 0 {   print!("\t");   }
@@ -497,6 +460,7 @@ fn show_data_vector_2d_cuadratica(data_vector_2d_all: Vec<Vec<bool>>) {
     //println!("");
 }
 
+/*  FUN QUE MUESTRA POR PANTALLA EL RANGO DE INTERSECCIÓN RANGO [ ( X ) - ( Y ) ]   */
 fn show_point_intersection_range(data_order_index: Vec<usize>) {
     println!("Rango de intersección\t{:?}", data_order_index);
 }
