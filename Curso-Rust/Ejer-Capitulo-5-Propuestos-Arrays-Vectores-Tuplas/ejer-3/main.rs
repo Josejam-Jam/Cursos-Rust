@@ -34,8 +34,9 @@
 use std::io;
 use std::str::FromStr;
 use regex::Regex;
-//use rand::Rng;
-//use rand::seq::Slice, thread_rng;
+/*use rand::Rng;
+  use rand::seq::Slice, thread_rng;
+*/
 use rand::prelude::SliceRandom;
 
 fn main() {
@@ -166,7 +167,7 @@ fn main() {
                                             data_ok = exp_regex.is_match(&data_ind_1.to_string()) 
                                                 || !exp_regex_num_negative.is_match(&entrada.to_string());
                         
-                                                if data_ok {
+                                                if data_ok && (data_ind_1 as i32 <= data_filas_colums) {
 
                                                     data_ok_all.push(true);
 
@@ -215,7 +216,7 @@ fn main() {
                                             data_ok = exp_regex.is_match(&data_ind_2.to_string()) 
                                                 || !exp_regex_num_negative.is_match(&entrada.to_string());
                         
-                                                if data_ok {
+                                                if data_ok  && (data_ind_2 as i32 <= data_filas_colums) {
 
                                                     data_ok_all.push(true);
 
@@ -282,7 +283,6 @@ fn main() {
                 
         }
 }
-
 
 fn is_all_data_ok(data_ok_all: Vec<bool>) -> bool {
     let mut result: bool = false;
@@ -357,6 +357,44 @@ fn get_values_false(data_filas: i32, mut data_vector: Vec<bool>) -> Vec<bool> {
     //**VERSIÓN 2   return vec_result;
     return data_vector;
 }
+
+/* fn clean_all_values_data_ok(mut data_ok_all: Vec<bool>)  {
+    
+    /*for ind in 0..data_ok_all.len() {
+        //print!("{}", data_ok_all[ind]);
+        data_ok_all.remove(ind);
+        
+    }
+    */
+
+    /*  COMPROBAR LA SALIDA NONE CON MATCH Y CONSTRUIR LA IMPRESIÓN DEL RESULTADO A PARTIR DE LA EVALUACIÓN   */
+    match data_ok_all.iter().find(|value| **value == true) {
+        Some(value) => if *value == true {data_ok_all.remove(0);} else if *value == false { data_ok_all.remove(0);},
+        None => println!("\tFalse\n"),
+    }
+
+    println!("El vector después de Vaciarlo: {:?}", data_ok_all);
+
+    //return data_ok_all;
+}
+*/
+
+/* fn clean_all_values_data_ok(mut data_ok_all: Vec<bool>) -> Vec<bool> {
+    
+    for ind in 0..data_ok_all.len() {
+        data_ok_all.remove(ind);
+    }
+
+    return data_ok_all;
+}
+*/
+
+/* fn clean_all_values_data_vector() -> Vec<_> {
+
+}
+*/
+
+/* vector_data_value.iter().find(|value| **value == true);      */
 
 /*  FUN QUE MEZCLA ALEATORIAMENTE LOS DATOS DENTRO DEL PROPIO VECTOR INTRODUCIDO POR PARÁMETRO    */
 fn get_vector_shuffle( mut data_vector: Vec<bool>) -> Vec<bool> {
